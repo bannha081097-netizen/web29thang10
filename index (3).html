@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABCDEF - Thời Trang Nha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Sans", "Segoe UI", Arial, sans-serif;
+      color: #111;
+      background: #fff;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- Header ---------- */
+    header {
+      background: #75bfd9;
+      border: 4px solid #b8901c;
+      display: grid;
+      grid-template-columns: 150px 1fr 260px;
+      grid-template-areas:
+        "logo title  auth"
+        "logo nav    nav"
+        "logo search search";
+      row-gap: 6px;
+      align-items: center;
+      column-gap: 16px;
+      padding: 8px 16px 6px 12px;
+      min-height: 135px;
+    }
+
+    .logo {
+      grid-area: logo;
+      width: 122px;
+      height: 122px;
+      border-radius: 50%;
+      background: #5aa6c4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.2;
+      color: #fff;
+      overflow: hidden;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    header h1 {
+      grid-area: title;
+      text-align: center;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .search {
+      grid-area: search;
+      background: #fff;
+      border: 0;
+      border-radius: 999px;
+      height: 46px;
+      padding: 0 20px;
+      font: inherit;
+      font-size: 20px;
+      text-align: center;
+      width: 100%;
+      outline: none;
+    }
+    .search:focus-visible { outline: 3px solid #b8901c; }
+
+    .auth {
+      grid-area: auth;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .auth a {
+      font-size: 20px;
+      white-space: nowrap;
+    }
+    .auth a:hover { text-decoration: underline; }
+    .auth a:focus-visible { outline: 3px solid #b8901c; }
+
+    nav.main-nav {
+      grid-area: nav;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 24px;
+    }
+    nav.main-nav a { font-size: 19px; }
+    nav.main-nav a:hover { text-decoration: underline; }
+
+    /* ---------- Sub-menu ---------- */
+    .subnav {
+      background: linear-gradient(to bottom, #d6ebf3, #eef6fa);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 6px 12px 0;
+      height: 54px;
+      position: relative;
+    }
+    .subnav a {
+      background: #75bfd9;
+      border-radius: 999px;
+      padding: 6px 12px 10px;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+    .subnav a:nth-child(1) { margin-top: 4px; }
+    .subnav a:hover { filter: brightness(1.08); }
+
+    .stripe {
+      height: 16px;
+      background: #fbd94a;
+    }
+    .fade {
+      height: 34px;
+      background: linear-gradient(to bottom, #eef6fa, #fff);
+    }
+
+    /* ---------- Products ---------- */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      align-items: start;
+      padding: 0 12px 40px;
+    }
+
+    .card { display: block; }
+
+    .card .photo {
+      width: 100%;
+      aspect-ratio: 1 / 0.9;
+      background: #e9edf0;
+      overflow: hidden;
+    }
+    .card .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card .caption {
+      background: #c9d3dd;
+      text-align: center;
+      padding: 28px 12px 4px;
+      min-height: 125px;
+    }
+    .card .caption h2 {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.5;
+      min-height: 60px;
+    }
+    .card .caption .price {
+      display: block;
+      font-size: 20px;
+      margin-top: 2px;
+      padding-bottom: 6px;
+    }
+    .card:hover .caption { background: #bcc9d6; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .products { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      header {
+        grid-template-columns: 100px 1fr;
+        grid-template-areas:
+          "logo title"
+          "logo auth"
+          "nav  nav"
+          "search search";
+        row-gap: 8px;
+      }
+      .logo { width: 90px; height: 90px; }
+      header h1 { font-size: 36px; }
+      .search { height: 46px; font-size: 18px; }
+      nav.main-nav { padding: 0; }
+    }
+    @media (max-width: 520px) {
+      .products { grid-template-columns: 1fr; }
+      .subnav { flex-wrap: wrap; height: auto; padding-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"></div>
+
+    <h1>ABCDEF</h1>
+
+    <div class="auth">
+      <a href="#">Sign up / Sign in</a>
+    </div>
+
+    <nav class="main-nav" aria-label="Menu chính">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <input class="search" type="search" placeholder="Thanh tìm kiếm" aria-label="Thanh tìm kiếm">
+  </header>
+
+  <div class="subnav">
+    <a href="#">Sản phẩm mới</a>
+    <a href="#">Sản phẩm nổi</a>
+  </div>
+  <div class="stripe"></div>
+  <div class="fade"></div>
+
+  <main class="products">
+
+    <a class="card" href="#">
+      <div class="photo"></div>
+      <div class="caption">
+        <h2></h2>
+        <span class="price">Giá</span>
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="photo"></div>
+      <div class="caption">
+        <h2></h2>
+        <span class="price">Giá</span>
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="photo"></div>
+      <div class="caption">
+        <h2></h2>
+        <span class="price">Giá</span>
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="photo"></div>
+      <div class="caption">
+        <h2></h2>
+        <span class="price">Giá</span>
+      </div>
+    </a>
+
+  </main>
+
+</body>
+</html>
